@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Answer Page</title>
+		<style>
+			.blue{
+				color: blue;
+				margin-bottom: 5px;
+			}
+
+			td{
+				padding-bottom: 15px;
+			}
+			input{
+				margin-left: 20px;
+			}
+			.liked{
+				margin-left: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div ng-controller='answersController'>
+			<div class='top'>
+				<a href='#/'>HOME</a> | <a href='#/new_question'>Add a Question</a>
+			</div>
+
+			<h1>{{question.text}}</h1>
+			<h3>{{question.description}}</h3>
+
+			<div class='bottom'>
+				<table>
+					<tr ng-repeat='answer in answers | orderBy: "likes" : true'>
+						<br>
+						<td>
+							<p class='blue'>{{answer.username}}:</p>
+							<strong>{{answer.text}}</strong><br>{{answer.support}}       
+							<div class='liked'>
+								{{answer.likes}}  likes<input type='submit' value='Like' ng-click='like(answer._id, answer.likes)'>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+	</div>
+	</body>
+</html>

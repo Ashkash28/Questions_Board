@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>Home</title>
+		<style>
+			.gray{
+					background-color: gray;
+				}
+			table{
+				border: 1px solid black;
+				border-collapse: collapse;
+				margin-top: 10px;
+			}
+			td{
+				border: 1px solid black;
+			}
+			tr{
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div ng-controller='usersController'>
+			<div class='top'>
+				<a href='#/'>HOME</a> | <a href='#/new_question'>Add a Question</a>
+			</div>
+
+			<div class='middle'>
+				Search <input type='text' ng-model='filter_text' placeholder='Search...'>
+			</div>
+
+			<div class='bottom'>
+				<table>
+					<thead>
+						<td class='gray'>Question</td>
+						<td class='gray'>Answers</td>
+						<td class='gray'>Action</td>
+					</thead>
+					<tbody>
+						<tr ng-repeat='question in questions | filter: filter_text'>
+							<td>{{question.text}}</td>
+							<td>{{question.answer_counter}}</td>
+							<td>
+								<a href='#/question/{{question._id}}'>Show</a>
+								<a href='#/question/{{question._id}}/new_answer'>Answer</a>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+
+		</div>
+	</body>
+</html>

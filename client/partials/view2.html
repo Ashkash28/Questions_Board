@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Question Page</title>
+		<style>
+			.green{
+				background-color: green;
+				color: white;
+			}
+			.red{
+				background-color: red;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div ng-controller='questionsController'>
+			<div class='top'>
+				<a href='#/'>HOME</a> | <a href='#/new_question'>Add a Question</a>
+			</div>
+			<h1>NEW QUESTION!</h1>
+			<div class='bottom'>
+				<form name='myForm'>
+				Question <input ng-model='newQuestion.text' type='text' name='text' ng-minlength='10'>
+				<span class="error" ng-show='myForm.text.$error.minlength'>Too short!</span>
+				</form>
+				Description(optional) <input ng-model='newQuestion.description' type='text'>
+				<input class='green' type='submit' value='Submit' ng-click='addQuestion()'>
+				<input class='red' type='submit' value='Cancel'>
+			</div>
+		</div>
+	</body>
+</html>

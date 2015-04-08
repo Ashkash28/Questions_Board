@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Answer Page</title>
+		<style>
+			.green{
+				background-color: green;
+				color: white;
+			}
+			.red{
+				background-color: red;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div ng-controller='answersController'>
+			<div class='top'>
+				<a href='#/'>HOME</a> | <a href='#/new_question'>Add a Question</a>
+			</div>
+			<h1>{{question.text}}</h1>
+			<h3>{{question.description}}</h3>
+			<div class='bottom'>
+				<form name='myForm'>
+					Your Answer: <input ng-model='newAnswer.text' type='text' name= 'text' ng-minlength='5'>
+
+					<span class="error" ng-show='myForm.text.$error.minlength'>Too short!</span>
+				</form>
+
+				Supporting details for your answer(optional)<input ng-model='newAnswer.support' type='text'>
+				<input class='green' type='submit' value='Submit' ng-click='addAnswer(question_id, {text: newAnswer.text, support: newAnswer.support})'>
+				<input class='red' type='submit' value='Cancel'>
+
+			</div>
+		</div>
+	</body>
+</html>
